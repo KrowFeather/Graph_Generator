@@ -2,34 +2,34 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import random
 import time  # 导入时间模块
+import Kernel.GraphBuffer as GB
 
-
+matrix = [[]]
 def Generate_DirectedGraph():
     # 创建有向图
     Graph = nx.DiGraph()
+    global matrix
+    matrix = [[0 for _ in range(GB.MAX_NODE_SIZES + 1)] for _ in range(GB.MAX_NODE_SIZES + 1)]
 
-    # 添加60个结点
-    max_node_size = 60
-    matrix = [[0 for _ in range(max_node_size + 1)] for _ in range(max_node_size + 1)]
-
-    nodes = range(1, 61)
+    nodes = range(1, GB.MAX_NODE_SIZES + 1)
     Graph.add_nodes_from(nodes)
-
     # 添加边，使得边数为50条
+
     max_edges = 50
-    while len(Graph.edges()) < max_edges:
+    for pack in GB.edges_buffer:
+        u = pack[0]
+        v = pack[1]
+        w = pack[2]
         # 随机选择两个节点
-        node1 = random.choice(nodes)
-        node2 = random.choice(nodes)
         # 如果边已存在，则不添加
-        if not Graph.has_edge(node1, node2):
-            Graph.add_edge(node1, node2)
+        if not Graph.has_edge(u, v):
+            Graph.add_edge(u, v)
             # 随机生成权重
-            matrix[node1][node2] = random.randint(1, 9)
-        elif not Graph.has_edge(node2, node1):
-            Graph.add_edge(node2, node1)
+            matrix[u][v] = w
+        elif not Graph.has_edge(u, v):
+            Graph.add_edge(u, v)
             # 随机生成权重
-            matrix[node2][node1] = random.randint(1, 9)
+            matrix[u][v] = random.randint(1, 9)
 
     # 使用 spring layout，并自定义 k 参数
     pos = nx.spring_layout(Graph, k=10)  # 设置 k 参数

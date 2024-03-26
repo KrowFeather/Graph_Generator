@@ -1,8 +1,8 @@
 import sys
 from PySide6.QtWidgets import QWidget, QApplication
 from generator_ui import Ui_Form
-from Kernel.DirectedGraph import *
-from Kernel.UndirectedGraph import *
+import Kernel.DirectedGraph as DAG
+import Kernel.UndirectedGraph as UDG
 from Kernel.trans_to_xlsw import *
 import Kernel.GraphBuffer as GB
 import Kernel.GraphUtils as Utils
@@ -13,9 +13,9 @@ class Frame(QWidget, Ui_Form):
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle("Graph Generator")
-        self.bind()
         self.node_num.setPlaceholderText('0')
         self.edge_num.setPlaceholderText('0')
+        self.bind()
 
     def bind(self):
         self.btn_generate.clicked.connect(lambda: self.generate())
@@ -24,21 +24,24 @@ class Frame(QWidget, Ui_Form):
         self.btn_confirm.clicked.connect(lambda: self.confirmGraph())
 
     def generate(self):
-
+        print(GB.edges_buffer)
+        DAG.Generate_DirectedGraph()
+        print(DAG.matrix)
+        print()
         pass
 
     def confirmGraph(self):
-        if self.node_num.text() is '':
+        if self.node_num.text() == '':
             GB.MAX_NODE_SIZES = 0
         else:
-            GB.MAX_NODE_SIZES = int(self.edge_num.text())
-        if self.edge_num.text() is '':
+            GB.MAX_NODE_SIZES = int(self.node_num.text())
+        if self.edge_num.text() == '':
             GB.MAX_EDGE_SIZES = 0
         else:
-            GB.MAX_EDGE_SIZES = int(self.node_num.text())
+            GB.MAX_EDGE_SIZES = int(self.edge_num.text())
         GB.edges_buffer = []
-        print(GB.MAX_EDGE_SIZES)
-        print(GB.MAX_NODE_SIZES)
+        print(f'nodes {GB.MAX_NODE_SIZES}')
+        print(f'edges {GB.MAX_EDGE_SIZES}')
 
     def addEdge(self):
         e = Utils.random_edges()
@@ -46,7 +49,6 @@ class Frame(QWidget, Ui_Form):
 
     def delEdge(self):
         GB.edges_buffer.pop()
-        pass
 
 
 def run():
