@@ -46,11 +46,5 @@ def Generate_DirectedGraph():
     # 获取当前时间戳
     timestamp = int(time.time())
     # 保存图片到计算机，并使用时间戳命名
-    # plt.savefig(f"./graph_{timestamp}.jpg")
     plt.savefig(f"./images/DirectedGraph/graph_{timestamp}.jpg")
     plt.show()
-
-    # for i in range(1, max_node_size + 1):
-    #     for j in range(1, max_node_size + 1):
-    #         print(matrix[i][j], end=' ')
-    #     print()
