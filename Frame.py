@@ -1,7 +1,7 @@
 import sys
 
 from PySide6.QtWidgets import QWidget, QApplication
-from ui import Ui_Form
+from generator_ui import Ui_Form
 
 
 class Frame(QWidget, Ui_Form):
