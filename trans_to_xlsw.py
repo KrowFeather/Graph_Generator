@@ -4,6 +4,7 @@ N = int(1e3 + 10)
 a = [[0 for _ in range(N)] for _ in range(N)]
 n, m = 0, 0
 cnt = 0
+col_num = []
 
 
 def key_in():
@@ -17,15 +18,6 @@ def key_in():
     col_num = []
     for i in range(1, m + 1):
         col_num.append('第' + str(i) + '列')
-
-
-def cout():
-    global n, m
-    global a
-    for i in range(n):
-        for j in range(m):
-            print(a[i][j], end=' ')
-        print()
 
 
 def xw_to_excel(data, filename):
@@ -46,5 +38,4 @@ def main():
     global cnt
     cnt += 1
     key_in()
-    cout()
     xw_to_excel(a, f'测试数据1-9{cnt}')

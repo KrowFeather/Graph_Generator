@@ -1,13 +1,15 @@
 import sys
 
 from PySide6.QtWidgets import QWidget, QApplication
+from ui import Ui_Form
 
 
-class Frame(QWidget):
+class Frame(QWidget, Ui_Form):
     def __init__(self):
         super().__init__()
+        self.setupUi(Ui_Form)
         self.setWindowTitle("Graph Generator")
-        self.setFixedSize(800, 600)
+        self.setFixedSize(600, 400)
 
 
 def run():
