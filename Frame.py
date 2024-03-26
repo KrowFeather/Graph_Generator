@@ -4,7 +4,7 @@ from generator_ui import Ui_Form
 from Kernel.DirectedGraph import *
 from Kernel.UndirectedGraph import *
 from Kernel.trans_to_xlsw import *
-from Kernel.GraphBuffer import *
+import Kernel.GraphBuffer as GraphBuffer
 
 
 class Frame(QWidget, Ui_Form):
@@ -20,22 +20,28 @@ class Frame(QWidget, Ui_Form):
         self.btn_generate.clicked.connect(lambda: self.generate())
         self.btn_addEdge.clicked.connect(lambda: self.addEdge())
         self.btn_delEdge.clicked.connect(lambda: self.delEdge())
+        self.btn_confirm.clicked.connect(lambda: self.confirmGraph())
 
     def generate(self):
-        if self.node_num.text() is None:
-            MAX_NODE_SIZES = 0
-        else:
-            MAX_EDGE_SIZES= int(self.edge_num.text())
-        if self.edge_num.text() is None:
-            MAX_EDGE_SIZES = 0
-        else:
-            MAX_NODE_SIZES = int(self.node_num.text())
-        print(MAX_NODE_SIZES)
-        print(MAX_EDGE_SIZES)
+
         pass
 
+    def confirmGraph(self):
+        if self.node_num.text() is '':
+            GraphBuffer.MAX_NODE_SIZES = 0
+        else:
+            GraphBuffer.MAX_NODE_SIZES = int(self.edge_num.text())
+        if self.edge_num.text() is '':
+            GraphBuffer.MAX_EDGE_SIZES = 0
+        else:
+            GraphBuffer.MAX_EDGE_SIZES = int(self.node_num.text())
+        GraphBuffer.edges_buffer = []
+        print(GraphBuffer.MAX_EDGE_SIZES)
+        print(GraphBuffer.MAX_NODE_SIZES)
+
     def addEdge(self):
-        edges.append()
+        e = GraphBuffer.random_edges()
+        GraphBuffer.edges_buffer.append(e)
         pass
 
     def delEdge(self):
