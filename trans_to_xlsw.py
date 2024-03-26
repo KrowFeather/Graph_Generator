@@ -45,7 +45,3 @@ def main():
     key_in()
     cout()
     xw_to_excel(a, '测试数据1-9(8)')
-
-
-if __name__ == '__main__':
-    main()
