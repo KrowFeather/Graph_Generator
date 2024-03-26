@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>500</height>
+    <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>700</width>
-    <height>500</height>
+    <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>700</width>
-    <height>500</height>
+    <height>600</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -28,27 +28,27 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>410</y>
-     <width>161</width>
-     <height>61</height>
+     <x>430</x>
+     <y>500</y>
+     <width>191</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>Generate</string>
    </property>
   </widget>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>370</y>
+     <x>20</x>
+     <y>470</y>
      <width>251</width>
      <height>131</height>
     </rect>
    </property>
    <property name="title">
-    <string>GroupBox</string>
+    <string>Select Graph Type</string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
@@ -56,14 +56,14 @@
       <item>
        <widget class="QRadioButton" name="radioButton">
         <property name="text">
-         <string>RadioButton</string>
+         <string>Undirected Graph</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QRadioButton" name="radioButton_2">
         <property name="text">
-         <string>RadioButton</string>
+         <string>Directed Graph</string>
         </property>
        </widget>
       </item>
@@ -76,16 +76,16 @@
     <rect>
      <x>10</x>
      <y>9</y>
-     <width>681</width>
-     <height>361</height>
+     <width>691</width>
+     <height>461</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <widget class="QGraphicsView" name="graphicsView"/>
+     <widget class="QTableWidget" name="tableWidget"/>
     </item>
     <item>
-     <widget class="QComboBox" name="comboBox"/>
+     <widget class="QGraphicsView" name="graphicsView"/>
     </item>
    </layout>
   </widget>
