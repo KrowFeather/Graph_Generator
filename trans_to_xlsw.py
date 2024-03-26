@@ -37,5 +37,5 @@ def xw_to_excel(data, filename):
 def main():
     global cnt
     cnt += 1
-    key_in()
+    # key_in()
     xw_to_excel(a, f'测试数据1-9{cnt}')
