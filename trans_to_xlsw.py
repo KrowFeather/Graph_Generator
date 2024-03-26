@@ -3,6 +3,7 @@ import xlsxwriter as xw
 N = int(1e3 + 10)
 a = [[0 for _ in range(N)] for _ in range(N)]
 n, m = 0, 0
+cnt = 0
 
 
 def key_in():
@@ -42,6 +43,8 @@ def xw_to_excel(data, filename):
 
 
 def main():
+    global cnt
+    cnt += 1
     key_in()
     cout()
-    xw_to_excel(a, '测试数据1-9(8)')
+    xw_to_excel(a, f'测试数据1-9{cnt}')
