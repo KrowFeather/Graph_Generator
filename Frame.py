@@ -25,7 +25,7 @@ class Frame(QWidget, Ui_Form):
         if self.node_num.text() is None:
             MAX_NODE_SIZES = 0
         else:
-            MAX_EDGE_SIZES = int(self.edge_num.text())
+            MAX_EDGE_SIZES= int(self.edge_num.text())
         if self.edge_num.text() is None:
             MAX_EDGE_SIZES = 0
         else:
