@@ -27,7 +27,7 @@ def cout():
         print()
 
 
-def xw_toexcel(data, filename):
+def xw_to_excel(data, filename):
     workbook = xw.Workbook(filename)
     worksheet1 = workbook.add_worksheet('sheet1')
     worksheet1.activate()  # 表已经激活
@@ -44,7 +44,7 @@ def xw_toexcel(data, filename):
 def main():
     key_in()
     cout()
-    xw_toexcel(a, '测试数据1-9(8)')
+    xw_to_excel(a, '测试数据1-9(8)')
 
 
 if __name__ == '__main__':
