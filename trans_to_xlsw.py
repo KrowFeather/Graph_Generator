@@ -31,7 +31,7 @@ def xw_to_excel(data, filename):
     workbook = xw.Workbook(filename)
     worksheet1 = workbook.add_worksheet('sheet1')
     worksheet1.activate()  # 表已经激活
-    title = ['Generated Graph'] + col_num
+    titles = ['Generated Graph'] + col_num
     worksheet1.write_row('A1', title)  # 表示开始位置,,横向顺延
     i = 2
     for j in range(n):  # 这个参数放的是行
