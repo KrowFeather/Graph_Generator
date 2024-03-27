@@ -26,6 +26,7 @@ class Frame(QWidget, Ui_Form):
         self.edgelistframe.setColumnWidth(1, 87)
         self.edgelistframe.setColumnWidth(2, 87)
         self.tableIndex = 0
+        self.view.setAlignment(Qt.AlignCenter)
         self.Gtype = 0
         self.btn_UDG.setChecked(True)
         self.bind()
@@ -82,11 +83,11 @@ class Frame(QWidget, Ui_Form):
     def showPic(self):
         if self.Gtype == 0:
             img = QImage(f"./images/UndirectedGraph/UDG_{UDG.timestamp}")
-            pixmap = QPixmap.fromImage(img.scaled(500, 400, Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
+            pixmap = QPixmap.fromImage(img)
             self.view.setPixmap(pixmap)
         else:
             img = QImage(f"./images/DirectedGraph/DAG_{DAG.timestamp}")
-            pixmap = QPixmap.fromImage(img.scaled(500, 400, Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
+            pixmap = QPixmap.fromImage(img)
             self.view.setPixmap(pixmap)
 
     def showMatrixTable(self):
@@ -114,7 +115,7 @@ class Frame(QWidget, Ui_Form):
 
 def run():
     app = QApplication([])
-    apply_stylesheet(app, theme='dark_teal.xml')
+    apply_stylesheet(app, theme='dark_lightgreen.xml')
     window = Frame()
     window.show()
     sys.exit(app.exec_())

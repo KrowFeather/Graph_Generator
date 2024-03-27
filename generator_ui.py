@@ -24,7 +24,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(800, 750)
+        Form.resize(1170, 750)
         Form.setMinimumSize(QSize(800, 750))
         Form.setMaximumSize(QSize(14214, 135135))
         self.horizontalLayout_8 = QHBoxLayout(Form)
@@ -44,6 +44,7 @@ class Ui_Form(object):
         self.view = QLabel(self.widget)
         self.view.setObjectName(u"view")
         self.view.setMinimumSize(QSize(500, 300))
+        self.view.setMaximumSize(QSize(16777215, 16777215))
 
         self.verticalLayout_2.addWidget(self.view)
 
@@ -129,6 +130,7 @@ class Ui_Form(object):
 
         self.node_num = QLineEdit(self.widget_2)
         self.node_num.setObjectName(u"node_num")
+        self.node_num.setMaximumSize(QSize(16777215, 16777215))
 
         self.verticalLayout_4.addWidget(self.node_num)
 
@@ -139,6 +141,8 @@ class Ui_Form(object):
 
         self.edge_num = QLineEdit(self.widget_2)
         self.edge_num.setObjectName(u"edge_num")
+        self.edge_num.setMaximumSize(QSize(16777215, 16777215))
+        self.edge_num.setSizeIncrement(QSize(0, 0))
 
         self.verticalLayout_4.addWidget(self.edge_num)
 
