@@ -23,6 +23,8 @@ class Frame(QWidget, Ui_Form):
         self.edgelistframe.setColumnWidth(1, 87)
         self.edgelistframe.setColumnWidth(2, 87)
         self.tableIndex = 0
+        self.Gtype = 0
+        self.btn_UDG.setChecked(True)
         self.bind()
 
     def bind(self):
@@ -30,18 +32,19 @@ class Frame(QWidget, Ui_Form):
         self.btn_addEdge.clicked.connect(lambda: self.addEdge())
         self.btn_delEdge.clicked.connect(lambda: self.delEdge())
         self.btn_confirm.clicked.connect(lambda: self.confirmGraph())
+        self.btn_UDG.clicked.connect(lambda: self.changeType(0))
+        self.btn_DAG.clicked.connect(lambda: self.changeType(1))
 
     def generate(self):
-        DAG.Generate_DirectedGraph()
-        UDG.Generate_UndirectedGraph()
-        # waiting delete
-        print(GB.edges_buffer)
-        print(DAG.matrix)
-        print(UDG.matrix)
-        # end
-        self.showPic()
+        if self.Gtype == 0:
+            UDG.Generate_UndirectedGraph()
+            self.showPic(0)
+            xlsx_writer.xw_to_excel(UDG.matrix, f'./xlsx/UndirectedGraph/xlsx_{UDG.timestamp}.xlsx')
+        else:
+            DAG.Generate_DirectedGraph()
+            self.showPic(1)
+            xlsx_writer.xw_to_excel(DAG.matrix, f'./xlsx/DirectedGraph/xlsx_{DAG.timestamp}.xlsx')
         self.showMatrixTable()
-        xlsx_writer.xw_to_excel(UDG.matrix, f'./xlsx/xls_{UDG.timestamp}.xlsx')
 
     def confirmGraph(self):
         if self.node_num.text() == '':
@@ -73,16 +76,24 @@ class Frame(QWidget, Ui_Form):
         self.tableIndex -= 1
         GB.edges_buffer.pop()
 
-    def showPic(self):
-        img = QPixmap(f"./images/UndirectedGraph/UDG_{UDG.timestamp}")
-        scaled_pixmap = img.scaled(500, 380, Qt.KeepAspectRatio, Qt.SmoothTransformation)
-        self.view.setPixmap(scaled_pixmap)
+    def showPic(self, Gtype):
+        if Gtype == 0:
+            img = QPixmap(f"./images/UndirectedGraph/UDG_{UDG.timestamp}")
+            scaled_pixmap = img.scaled(500, 380, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+            self.view.setPixmap(scaled_pixmap)
+        else:
+            img = QPixmap(f"./images/DirectedGraph/DAG_{DAG.timestamp}")
+            scaled_pixmap = img.scaled(500, 380, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+            self.view.setPixmap(scaled_pixmap)
 
     def showMatrixTable(self):
         self.matrixTable.setRowCount(GB.MAX_NODE_SIZES)
         self.matrixTable.setColumnCount(GB.MAX_NODE_SIZES)
         for pack in GB.edges_buffer:
             self.matrixTable.setItem(pack[0] - 1, pack[1] - 1, QTableWidgetItem(str(pack[2])))
+
+    def changeType(self, val):
+        self.Gtype = val
 
 
 def run():

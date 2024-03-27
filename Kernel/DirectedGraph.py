@@ -5,7 +5,7 @@ import time  # 导入时间模块
 import Kernel.GraphBuffer as GB
 
 matrix = [[]]
-
+timestamp = 0
 
 def Generate_DirectedGraph():
     # 创建有向图

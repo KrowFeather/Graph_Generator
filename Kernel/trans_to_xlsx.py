@@ -18,6 +18,6 @@ def xw_to_excel(data, filename):
     i = 2
     for j in range(n):  # 这个参数放的是行
         row = 'A' + str(i)
-        worksheet1.write_row(row, ['第' + str(i - 1) + '行'] + data[i - 1][1:m+1])
+        worksheet1.write_row(row, ['第' + str(i - 1) + '行'] + data[i - 1][1:m + 1])
         i += 1
     workbook.close()
