@@ -27,7 +27,11 @@ class Ui_Form(object):
         Form.resize(800, 750)
         Form.setMinimumSize(QSize(800, 750))
         Form.setMaximumSize(QSize(14214, 135135))
-        self.verticalLayout_5 = QVBoxLayout(Form)
+        self.horizontalLayout_8 = QHBoxLayout(Form)
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.horizontalLayout_7 = QHBoxLayout()
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.verticalLayout_5 = QVBoxLayout()
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.widget = QWidget(Form)
         self.widget.setObjectName(u"widget")
@@ -43,18 +47,13 @@ class Ui_Form(object):
 
         self.verticalLayout_2.addWidget(self.view)
 
-        self.matrixTable = QTableWidget(self.widget)
-        self.matrixTable.setObjectName(u"matrixTable")
-
-        self.verticalLayout_2.addWidget(self.matrixTable)
-
 
         self.horizontalLayout_2.addLayout(self.verticalLayout_2)
 
         self.edgelistframe = QTableWidget(self.widget)
         self.edgelistframe.setObjectName(u"edgelistframe")
         self.edgelistframe.setMinimumSize(QSize(264, 0))
-        self.edgelistframe.setMaximumSize(QSize(16777215, 16777215))
+        self.edgelistframe.setMaximumSize(QSize(340, 16777215))
         self.edgelistframe.setBaseSize(QSize(264, 0))
 
         self.horizontalLayout_2.addWidget(self.edgelistframe)
@@ -97,12 +96,14 @@ class Ui_Form(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.btn_addEdge = QPushButton(Form)
         self.btn_addEdge.setObjectName(u"btn_addEdge")
+        self.btn_addEdge.setMinimumSize(QSize(150, 0))
         self.btn_addEdge.setMaximumSize(QSize(100, 16777215))
 
         self.verticalLayout_3.addWidget(self.btn_addEdge)
 
         self.btn_delEdge = QPushButton(Form)
         self.btn_delEdge.setObjectName(u"btn_delEdge")
+        self.btn_delEdge.setMinimumSize(QSize(150, 0))
         self.btn_delEdge.setMaximumSize(QSize(100, 16777215))
 
         self.verticalLayout_3.addWidget(self.btn_delEdge)
@@ -153,6 +154,11 @@ class Ui_Form(object):
 
         self.horizontalLayout_6.addWidget(self.btn_qspawn)
 
+        self.btn_exit = QPushButton(self.widget_2)
+        self.btn_exit.setObjectName(u"btn_exit")
+
+        self.horizontalLayout_6.addWidget(self.btn_exit)
+
 
         self.verticalLayout_4.addLayout(self.horizontalLayout_6)
 
@@ -164,6 +170,18 @@ class Ui_Form(object):
 
 
         self.verticalLayout_5.addLayout(self.horizontalLayout_5)
+
+
+        self.horizontalLayout_7.addLayout(self.verticalLayout_5)
+
+        self.matrixTable = QTableWidget(Form)
+        self.matrixTable.setObjectName(u"matrixTable")
+        self.matrixTable.setMaximumSize(QSize(600, 16777215))
+
+        self.horizontalLayout_7.addWidget(self.matrixTable)
+
+
+        self.horizontalLayout_8.addLayout(self.horizontalLayout_7)
 
 
         self.retranslateUi(Form)
@@ -178,11 +196,12 @@ class Ui_Form(object):
         self.btn_UDG.setText(QCoreApplication.translate("Form", u"Undirected Graph", None))
         self.btn_DAG.setText(QCoreApplication.translate("Form", u"Directed Graph", None))
         self.btn_addEdge.setText(QCoreApplication.translate("Form", u"Add Edge", None))
-        self.btn_delEdge.setText(QCoreApplication.translate("Form", u"Delet Edge", None))
+        self.btn_delEdge.setText(QCoreApplication.translate("Form", u"Delete Edge", None))
         self.btn_generate.setText(QCoreApplication.translate("Form", u"Generate", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"Node number", None))
         self.label.setText(QCoreApplication.translate("Form", u"Edge number", None))
         self.btn_confirm.setText(QCoreApplication.translate("Form", u"Confirm", None))
         self.btn_qspawn.setText(QCoreApplication.translate("Form", u"Quick Spawn", None))
+        self.btn_exit.setText(QCoreApplication.translate("Form", u"exit", None))
     # retranslateUi
 

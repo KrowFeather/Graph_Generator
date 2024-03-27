@@ -1,7 +1,7 @@
 import sys
 
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QPixmap
+from PySide6.QtGui import QPixmap, QImage
 from PySide6.QtWidgets import QWidget, QApplication, QGraphicsScene, QTableWidgetItem
 from generator_ui import Ui_Form
 import Kernel.DirectedGraph as DAG
@@ -9,6 +9,7 @@ import Kernel.UndirectedGraph as UDG
 import Kernel.trans_to_xlsx as xlsx_writer
 import Kernel.GraphBuffer as GB
 import Kernel.GraphUtils as Utils
+from qt_material import apply_stylesheet
 
 
 class Frame(QWidget, Ui_Form):
@@ -16,6 +17,8 @@ class Frame(QWidget, Ui_Form):
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle("Graph Generator")
+        self.setWindowFlag(Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint | Qt.WindowMaximizeButtonHint)
+        self.showFullScreen()
         self.node_num.setPlaceholderText('0')
         self.edge_num.setPlaceholderText('0')
         self.edgelistframe.setColumnCount(3)
@@ -35,6 +38,7 @@ class Frame(QWidget, Ui_Form):
         self.btn_UDG.clicked.connect(lambda: self.changeType(0))
         self.btn_DAG.clicked.connect(lambda: self.changeType(1))
         self.btn_qspawn.clicked.connect(lambda: self.quickSpawn())
+        self.btn_exit.clicked.connect(lambda: self.exit())
 
     def generate(self):
         if self.Gtype == 0:
@@ -53,6 +57,8 @@ class Frame(QWidget, Ui_Form):
         else:
             GB.MAX_NODE_SIZES = int(self.node_num.text())
         GB.edges_buffer = []
+        self.edgelistframe.clear()
+        self.tableIndex = 0
 
     def addEdge(self):
         e = Utils.random_edges()
@@ -75,13 +81,13 @@ class Frame(QWidget, Ui_Form):
 
     def showPic(self):
         if self.Gtype == 0:
-            img = QPixmap(f"./images/UndirectedGraph/UDG_{UDG.timestamp}")
-            scaled_pixmap = img.scaled(500, 380, Qt.KeepAspectRatio, Qt.SmoothTransformation)
-            self.view.setPixmap(scaled_pixmap)
+            img = QImage(f"./images/UndirectedGraph/UDG_{UDG.timestamp}")
+            pixmap = QPixmap.fromImage(img.scaled(500, 400, Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
+            self.view.setPixmap(pixmap)
         else:
-            img = QPixmap(f"./images/DirectedGraph/DAG_{DAG.timestamp}")
-            scaled_pixmap = img.scaled(500, 380, Qt.KeepAspectRatio, Qt.SmoothTransformation)
-            self.view.setPixmap(scaled_pixmap)
+            img = QImage(f"./images/DirectedGraph/DAG_{DAG.timestamp}")
+            pixmap = QPixmap.fromImage(img.scaled(500, 400, Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
+            self.view.setPixmap(pixmap)
 
     def showMatrixTable(self):
         self.matrixTable.setRowCount(GB.MAX_NODE_SIZES)
@@ -101,9 +107,14 @@ class Frame(QWidget, Ui_Form):
         for i in range(cnt):
             self.addEdge()
 
+    def exit(self):
+        self.close()
+        pass
+
 
 def run():
     app = QApplication([])
+    apply_stylesheet(app, theme='dark_teal.xml')
     window = Frame()
     window.show()
     sys.exit(app.exec_())
