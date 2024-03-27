@@ -17,7 +17,6 @@ class Frame(QWidget, Ui_Form):
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle("Graph Generator")
-        self.setWindowFlag(Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint | Qt.WindowMaximizeButtonHint)
         self.showFullScreen()
         self.node_num.setPlaceholderText('0')
         self.edge_num.setPlaceholderText('0')
