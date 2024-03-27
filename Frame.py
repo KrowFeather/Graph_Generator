@@ -26,8 +26,9 @@ class Frame(QWidget, Ui_Form):
     def generate(self):
         print(GB.edges_buffer)
         DAG.Generate_DirectedGraph()
+        UDG.Generate_UndirectedGraph()
         print(DAG.matrix)
-        print()
+        print(UDG.matrix)
         pass
 
     def confirmGraph(self):
