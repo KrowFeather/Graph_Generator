@@ -5,6 +5,7 @@ import time  # 导入时间模块
 import Kernel.GraphBuffer as GB
 
 matrix = [[]]
+timestamp = 0
 
 
 def Generate_UndirectedGraph():
@@ -42,7 +43,9 @@ def Generate_UndirectedGraph():
             font_size=9)
 
     # 获取当前时间戳
+
+    global timestamp
     timestamp = int(time.time())
     # 保存图片到计算机，并使用时间戳命名
-    plt.savefig(f"./images/UndirectedGraph/UDG_{timestamp}.jpg")
+    plt.savefig(f"./images/UndirectedGraph/UDG_{timestamp}.png")
     plt.show()

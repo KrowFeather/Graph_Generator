@@ -43,5 +43,5 @@ def Generate_DirectedGraph():
     # 获取当前时间戳
     timestamp = int(time.time())
     # 保存图片到计算机，并使用时间戳命名
-    plt.savefig(f"./images/DirectedGraph/DAG_{timestamp}.jpg")
+    plt.savefig(f"./images/DirectedGraph/DAG_{timestamp}.png")
     plt.show()

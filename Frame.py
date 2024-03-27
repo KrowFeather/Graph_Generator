@@ -1,5 +1,8 @@
 import sys
-from PySide6.QtWidgets import QWidget, QApplication
+
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QPixmap
+from PySide6.QtWidgets import QWidget, QApplication, QGraphicsScene
 from generator_ui import Ui_Form
 import Kernel.DirectedGraph as DAG
 import Kernel.UndirectedGraph as UDG
@@ -29,6 +32,7 @@ class Frame(QWidget, Ui_Form):
         UDG.Generate_UndirectedGraph()
         print(DAG.matrix)
         print(UDG.matrix)
+        self.showPic()
         pass
 
     def confirmGraph(self):
@@ -50,6 +54,11 @@ class Frame(QWidget, Ui_Form):
 
     def delEdge(self):
         GB.edges_buffer.pop()
+
+    def showPic(self):
+        img = QPixmap(f"./images/UndirectedGraph/UDG_{UDG.timestamp}")
+        scaled_pixmap = img.scaled(550, 350, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        self.view.setPixmap(scaled_pixmap)
 
 
 def run():
