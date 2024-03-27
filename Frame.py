@@ -2,7 +2,7 @@ import sys
 
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QPixmap, QImage
-from PySide6.QtWidgets import QWidget, QApplication, QGraphicsScene, QTableWidgetItem
+from PySide6.QtWidgets import QWidget, QApplication, QGraphicsScene, QTableWidgetItem, QHeaderView
 from generator_ui import Ui_Form
 import Kernel.DirectedGraph as DAG
 import Kernel.UndirectedGraph as UDG
@@ -29,6 +29,8 @@ class Frame(QWidget, Ui_Form):
         self.view.setAlignment(Qt.AlignCenter)
         self.Gtype = 0
         self.btn_UDG.setChecked(True)
+        self.edgelistframe.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
+        self.matrixTable.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
         self.bind()
 
     def bind(self):
