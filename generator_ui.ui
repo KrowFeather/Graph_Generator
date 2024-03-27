@@ -202,6 +202,13 @@
               </property>
              </widget>
             </item>
+            <item>
+             <widget class="QPushButton" name="btn_qspawn">
+              <property name="text">
+               <string>Quick Spawn</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </item>
          </layout>

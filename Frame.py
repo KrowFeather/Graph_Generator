@@ -34,6 +34,7 @@ class Frame(QWidget, Ui_Form):
         self.btn_confirm.clicked.connect(lambda: self.confirmGraph())
         self.btn_UDG.clicked.connect(lambda: self.changeType(0))
         self.btn_DAG.clicked.connect(lambda: self.changeType(1))
+        self.btn_qspawn.clicked.connect(lambda: self.quickSpawn())
 
     def generate(self):
         if self.Gtype == 0:
@@ -51,10 +52,6 @@ class Frame(QWidget, Ui_Form):
             GB.MAX_NODE_SIZES = 0
         else:
             GB.MAX_NODE_SIZES = int(self.node_num.text())
-        if self.edge_num.text() == '':
-            GB.MAX_EDGE_SIZES = 0
-        else:
-            GB.MAX_EDGE_SIZES = int(self.edge_num.text())
         GB.edges_buffer = []
 
     def addEdge(self):
@@ -94,7 +91,15 @@ class Frame(QWidget, Ui_Form):
 
     def changeType(self, val):
         self.Gtype = val
-        print(self.Gtype)
+
+    def quickSpawn(self):
+        if self.edge_num.text() == '':
+            GB.MAX_EDGE_SIZES = 0
+        else:
+            GB.MAX_EDGE_SIZES = int(self.edge_num.text())
+        cnt = GB.MAX_EDGE_SIZES
+        for i in range(cnt):
+            self.addEdge()
 
 
 def run():

@@ -148,6 +148,11 @@ class Ui_Form(object):
 
         self.horizontalLayout_6.addWidget(self.btn_confirm)
 
+        self.btn_qspawn = QPushButton(self.widget_2)
+        self.btn_qspawn.setObjectName(u"btn_qspawn")
+
+        self.horizontalLayout_6.addWidget(self.btn_qspawn)
+
 
         self.verticalLayout_4.addLayout(self.horizontalLayout_6)
 
@@ -178,5 +183,6 @@ class Ui_Form(object):
         self.label_2.setText(QCoreApplication.translate("Form", u"Node number", None))
         self.label.setText(QCoreApplication.translate("Form", u"Edge number", None))
         self.btn_confirm.setText(QCoreApplication.translate("Form", u"Confirm", None))
+        self.btn_qspawn.setText(QCoreApplication.translate("Form", u"Quick Spawn", None))
     # retranslateUi
 
