@@ -15,17 +15,14 @@ def Generate_DirectedGraph():
 
     nodes = range(1, GB.MAX_NODE_SIZES + 1)
     Graph.add_nodes_from(nodes)
-    # 添加边，使得边数为50条
 
     for pack in GB.edges_buffer:
         u = pack[0]
         v = pack[1]
         w = pack[2]
-        # 随机选择两个节点
         # 如果边已存在，则不添加
         if not Graph.has_edge(u, v):
             Graph.add_edge(u, v)
-            # 随机生成权重
             matrix[u][v] = w
 
     # 使用 spring layout，并自定义 k 参数

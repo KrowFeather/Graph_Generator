@@ -128,7 +128,6 @@ class Frame(QWidget, Ui_Form):
 
     def exit(self):
         self.close()
-        pass
 
 
 def run():
