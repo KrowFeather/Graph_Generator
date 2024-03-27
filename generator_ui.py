@@ -39,7 +39,7 @@ class Ui_Form(object):
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.view = QLabel(self.widget)
         self.view.setObjectName(u"view")
-        self.view.setMinimumSize(QSize(400, 300))
+        self.view.setMinimumSize(QSize(500, 300))
 
         self.verticalLayout_2.addWidget(self.view)
 
@@ -53,7 +53,9 @@ class Ui_Form(object):
 
         self.edgelistframe = QTableWidget(self.widget)
         self.edgelistframe.setObjectName(u"edgelistframe")
-        self.edgelistframe.setMaximumSize(QSize(250, 16777215))
+        self.edgelistframe.setMinimumSize(QSize(264, 0))
+        self.edgelistframe.setMaximumSize(QSize(16777215, 16777215))
+        self.edgelistframe.setBaseSize(QSize(264, 0))
 
         self.horizontalLayout_2.addWidget(self.edgelistframe)
 
@@ -166,7 +168,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
-        self.view.setText(QCoreApplication.translate("Form", u"TextLabel", None))
+        self.view.setText("")
         self.groupBox.setTitle(QCoreApplication.translate("Form", u"Select Graph Type", None))
         self.btn_UDG.setText(QCoreApplication.translate("Form", u"Undirected Graph", None))
         self.btn_DAG.setText(QCoreApplication.translate("Form", u"Directed Graph", None))

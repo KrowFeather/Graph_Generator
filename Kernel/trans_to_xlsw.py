@@ -1,9 +1,10 @@
 import xlsxwriter as xw
+import Kernel.DirectedGraph as DAG
+import Kernel.UndirectedGraph as UDG
 
 N = int(1e3 + 10)
 a = [[0 for _ in range(N)] for _ in range(N)]
 n, m = 0, 0
-cnt = 0
 col_num = []
 
 
@@ -35,7 +36,5 @@ def xw_to_excel(data, filename):
 
 
 def main():
-    global cnt
-    cnt += 1
     # key_in()
-    xw_to_excel(a, f'测试数据1-9{cnt}')
+    xw_to_excel(a, f'./xlsw/xls_{UDG.timestamp}')
