@@ -58,7 +58,8 @@ class Frame(QWidget, Ui_Form):
         else:
             GB.MAX_NODE_SIZES = int(self.node_num.text())
         GB.edges_buffer = []
-        self.edgelistframe.clear()
+        for i in range(self.tableIndex, 0, -1):
+            self.edgelistframe.removeRow(i - 1)
         self.tableIndex = 0
 
     def addEdge(self):
@@ -93,8 +94,13 @@ class Frame(QWidget, Ui_Form):
     def showMatrixTable(self):
         self.matrixTable.setRowCount(GB.MAX_NODE_SIZES)
         self.matrixTable.setColumnCount(GB.MAX_NODE_SIZES)
-        for pack in GB.edges_buffer:
-            self.matrixTable.setItem(pack[0] - 1, pack[1] - 1, QTableWidgetItem(str(pack[2])))
+        if self.Gtype == 0:
+            for pack in GB.edges_buffer:
+                self.matrixTable.setItem(pack[0] - 1, pack[1] - 1, QTableWidgetItem(str(pack[2])))
+                self.matrixTable.setItem(pack[1] - 1, pack[0] - 1, QTableWidgetItem(str(pack[2])))
+        else:
+            for pack in GB.edges_buffer:
+                self.matrixTable.setItem(pack[0] - 1, pack[1] - 1, QTableWidgetItem(str(pack[2])))
 
     def changeType(self, val):
         self.Gtype = val
