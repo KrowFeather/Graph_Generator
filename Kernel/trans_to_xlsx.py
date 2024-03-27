@@ -9,7 +9,7 @@ def xw_to_excel(data, filename):
     m = GB.MAX_NODE_SIZES
     col_num = []
     for i in range(1, m + 1):
-        col_num.append('第' + str(i) + '列')
+        col_num.append(str(i))
     workbook = xw.Workbook(filename)
     worksheet1 = workbook.add_worksheet('sheet1')
     worksheet1.activate()  # 表已经激活
@@ -18,6 +18,6 @@ def xw_to_excel(data, filename):
     i = 2
     for j in range(n):  # 这个参数放的是行
         row = 'A' + str(i)
-        worksheet1.write_row(row, ['第' + str(i - 1) + '行'] + data[i - 1][1:m + 1])
+        worksheet1.write_row(row, [str(i - 1)] + data[i - 1][1:m + 1])
         i += 1
     workbook.close()
