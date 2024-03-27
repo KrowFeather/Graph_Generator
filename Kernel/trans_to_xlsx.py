@@ -1,27 +1,15 @@
 import xlsxwriter as xw
 import Kernel.DirectedGraph as DAG
 import Kernel.UndirectedGraph as UDG
-
-N = int(1e3 + 10)
-a = [[0 for _ in range(N)] for _ in range(N)]
-n, m = 0, 0
-col_num = []
-
-
-def key_in():
-    global n, m, a
-    n, m = map(int, input().split())
-    for i in range(n):
-        row = list(map(int, input().split()))
-        for j in range(len(row)):
-            a[i][j] = row[j]
-    global col_num
-    col_num = []
-    for i in range(1, m + 1):
-        col_num.append('第' + str(i) + '列')
+import Kernel.GraphBuffer as GB
 
 
 def xw_to_excel(data, filename):
+    n = GB.MAX_NODE_SIZES
+    m = GB.MAX_NODE_SIZES
+    col_num = []
+    for i in range(1, m + 1):
+        col_num.append('第' + str(i) + '列')
     workbook = xw.Workbook(filename)
     worksheet1 = workbook.add_worksheet('sheet1')
     worksheet1.activate()  # 表已经激活
@@ -30,11 +18,6 @@ def xw_to_excel(data, filename):
     i = 2
     for j in range(n):  # 这个参数放的是行
         row = 'A' + str(i)
-        worksheet1.write_row(row, ['第' + str(i - 1) + '行'] + data[i - 2][:m])
+        worksheet1.write_row(row, ['第' + str(i - 1) + '行'] + data[i - 1][1:m+1])
         i += 1
     workbook.close()
-
-
-def main():
-    # key_in()
-    xw_to_excel(a, f'./xlsw/xls_{UDG.timestamp}')

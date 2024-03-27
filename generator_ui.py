@@ -43,10 +43,10 @@ class Ui_Form(object):
 
         self.verticalLayout_2.addWidget(self.view)
 
-        self.tableWidget = QTableWidget(self.widget)
-        self.tableWidget.setObjectName(u"tableWidget")
+        self.matrixTable = QTableWidget(self.widget)
+        self.matrixTable.setObjectName(u"matrixTable")
 
-        self.verticalLayout_2.addWidget(self.tableWidget)
+        self.verticalLayout_2.addWidget(self.matrixTable)
 
 
         self.horizontalLayout_2.addLayout(self.verticalLayout_2)

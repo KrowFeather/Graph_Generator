@@ -23,7 +23,7 @@ def Generate_DirectedGraph():
         w = pack[2]
         # 随机选择两个节点
         # 如果边已存在，则不添加
-        if u != v and not Graph.has_edge(u, v):
+        if not Graph.has_edge(u, v):
             Graph.add_edge(u, v)
             # 随机生成权重
             matrix[u][v] = w

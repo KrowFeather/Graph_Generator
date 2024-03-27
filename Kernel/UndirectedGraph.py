@@ -24,7 +24,7 @@ def Generate_UndirectedGraph():
         w = pack[2]
         # 确保所选节点不相同且之间没有边
         # 如果边已存在，则不添加
-        if u != v and not Graph.has_edge(u, v):
+        if not Graph.has_edge(u, v):
             Graph.add_edge(u, v)
             Graph.add_edge(v, u)
             matrix[u][v] = w
