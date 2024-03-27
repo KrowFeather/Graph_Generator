@@ -21,9 +21,8 @@ class Frame(QWidget, Ui_Form):
         self.node_num.setPlaceholderText('0')
         self.edge_num.setPlaceholderText('0')
         self.edgelistframe.setColumnCount(3)
-        self.edgelistframe.setColumnWidth(0, 88)
-        self.edgelistframe.setColumnWidth(1, 87)
-        self.edgelistframe.setColumnWidth(2, 87)
+        self.titles = ['u', 'v', 'w']
+        self.edgelistframe.setHorizontalHeaderLabels(self.titles)
         self.tableIndex = 0
         self.view.setAlignment(Qt.AlignCenter)
         self.Gtype = 0
