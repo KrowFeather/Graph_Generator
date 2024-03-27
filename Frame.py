@@ -46,20 +46,27 @@ class Frame(QWidget, Ui_Form):
             UDG.Generate_UndirectedGraph()
             self.showPic()
             xlsx_writer.xw_to_excel(UDG.matrix, f'./xlsx/UndirectedGraph/xlsx_{UDG.timestamp}.xlsx')
+            self.showMatrixTable()
         else:
             DAG.Generate_DirectedGraph()
             self.showPic()
             xlsx_writer.xw_to_excel(DAG.matrix, f'./xlsx/DirectedGraph/xlsx_{DAG.timestamp}.xlsx')
-        self.showMatrixTable()
+            self.showMatrixTable()
 
     def confirmGraph(self):
+        for i in range(GB.MAX_NODE_SIZES, -1, -1):
+            self.matrixTable.removeRow(i)
+        for i in range(GB.MAX_NODE_SIZES, -1, -1):
+            self.matrixTable.removeColumn(i)
+        for i in range(self.tableIndex, 0, -1):
+            self.edgelistframe.removeRow(i - 1)
+
         if self.node_num.text() == '':
             GB.MAX_NODE_SIZES = 0
         else:
             GB.MAX_NODE_SIZES = int(self.node_num.text())
+
         GB.edges_buffer = []
-        for i in range(self.tableIndex, 0, -1):
-            self.edgelistframe.removeRow(i - 1)
         self.tableIndex = 0
 
     def addEdge(self):
@@ -94,6 +101,7 @@ class Frame(QWidget, Ui_Form):
     def showMatrixTable(self):
         self.matrixTable.setRowCount(GB.MAX_NODE_SIZES)
         self.matrixTable.setColumnCount(GB.MAX_NODE_SIZES)
+        self.clearMatrixTable()
         if self.Gtype == 0:
             for pack in GB.edges_buffer:
                 self.matrixTable.setItem(pack[0] - 1, pack[1] - 1, QTableWidgetItem(str(pack[2])))
@@ -113,6 +121,9 @@ class Frame(QWidget, Ui_Form):
         cnt = GB.MAX_EDGE_SIZES
         for i in range(cnt):
             self.addEdge()
+
+    def clearMatrixTable(self):
+        self.matrixTable.clear()
 
     def exit(self):
         self.close()
