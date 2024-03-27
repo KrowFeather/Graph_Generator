@@ -38,11 +38,11 @@ class Frame(QWidget, Ui_Form):
     def generate(self):
         if self.Gtype == 0:
             UDG.Generate_UndirectedGraph()
-            self.showPic(0)
+            self.showPic()
             xlsx_writer.xw_to_excel(UDG.matrix, f'./xlsx/UndirectedGraph/xlsx_{UDG.timestamp}.xlsx')
         else:
             DAG.Generate_DirectedGraph()
-            self.showPic(1)
+            self.showPic()
             xlsx_writer.xw_to_excel(DAG.matrix, f'./xlsx/DirectedGraph/xlsx_{DAG.timestamp}.xlsx')
         self.showMatrixTable()
 
@@ -76,8 +76,8 @@ class Frame(QWidget, Ui_Form):
         self.tableIndex -= 1
         GB.edges_buffer.pop()
 
-    def showPic(self, Gtype):
-        if Gtype == 0:
+    def showPic(self):
+        if self.Gtype == 0:
             img = QPixmap(f"./images/UndirectedGraph/UDG_{UDG.timestamp}")
             scaled_pixmap = img.scaled(500, 380, Qt.KeepAspectRatio, Qt.SmoothTransformation)
             self.view.setPixmap(scaled_pixmap)
@@ -94,6 +94,7 @@ class Frame(QWidget, Ui_Form):
 
     def changeType(self, val):
         self.Gtype = val
+        print(self.Gtype)
 
 
 def run():

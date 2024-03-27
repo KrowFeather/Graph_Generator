@@ -41,6 +41,7 @@ def Generate_DirectedGraph():
             font_size=9)
 
     # 获取当前时间戳
+    global timestamp
     timestamp = int(time.time())
     # 保存图片到计算机，并使用时间戳命名
     plt.savefig(f"./images/DirectedGraph/DAG_{timestamp}.png")
