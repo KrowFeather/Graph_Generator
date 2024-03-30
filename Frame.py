@@ -17,7 +17,7 @@ class Frame(QWidget, Ui_Form):
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle("Graph Generator")
-        self.showFullScreen()
+        # self.showFullScreen()
         self.node_num.setPlaceholderText('0')
         self.edge_num.setPlaceholderText('0')
         self.edgelistframe.setColumnCount(3)
